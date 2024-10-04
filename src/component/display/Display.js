@@ -1,11 +1,12 @@
-export default function Display({ title, src, alt, ingredient1, ingredient2 }) {
+export default function Display(props) {
   return (
     <section className="cocktail-display">
-      <h2>{title}</h2>
-      <img src={src} alt={alt} />
+      <h2>{props.title}</h2>
+      <img src={props.src} alt={props.alt} />
       <ul>
-        <li>{ingredient1}</li>
-        <li>{ingredient2}</li>
+        {props.ingredients.map((ingredient, index) => (
+          <li key={index}>{ingredient}</li>
+        ))}
       </ul>
     </section>
   );

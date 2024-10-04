@@ -30,19 +30,28 @@ function App() {
     console.log(response);
   }
 
+  //GET INGREDIENTS FROM OBJECT
+  function getIngredient(cocktail) {
+    return Object.keys(cocktail).reduce((acc, key) => {
+      if (key.includes("Ingredient") && cocktail[key] !== null) {
+        acc.push(cocktail[key]);
+      }
+      return acc;
+    }, []);
+  }
+
   return (
     <div className="App">
       <Header title={"Sam's Bar"} />
       <Form onSubmit={handleSubmit} onChange={handleChange} />
       {response.drinks &&
-        response.drinks.map((cocktail) => (
+        response.drinks.map((cocktail, index) => (
           <Display
-            key={cocktail.idDrink}
+            key={index}
             title={cocktail.strDrink}
-            // src={cocktail.strDrinkThumb}
+            src={cocktail.strDrinkThumb}
             alt={cocktail.strDrink}
-            ingredient1={cocktail.strIngredient1}
-            ingredient2={cocktail.strIngredient2}
+            ingredients={getIngredient(cocktail)}
           />
         ))}
       <Footer text={"paowered by thecocktaildb"} />
