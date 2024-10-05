@@ -1,11 +1,14 @@
-export default function Form({ onSubmit, onChange }) {
+export default function Form(props) {
   return (
-    <main className="header">
-      <form onSubmit={onSubmit}>
-        <label htmlFor="cocktail-input">Cocktail name:</label>
-        <input type="text" id="cocktail-input" onChange={onChange}></input>
-        <input type="submit" value="serch"></input>
-      </form>
-    </main>
+    <form onSubmit={props.onSubmit}>
+      <label htmlFor="cocktail-input">Cocktail name:</label>
+      <input
+        type="text"
+        id="cocktail-input"
+        value={props.inputValue}
+        onChange={props.onChange}
+      ></input>
+      <input type="submit" value="serch"></input>
+    </form>
   );
 }

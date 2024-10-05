@@ -19,16 +19,18 @@ function App() {
   //HANDLE SUBMIT (fetch)
   function handleSubmit(e) {
     e.preventDefault();
-    try {
-      fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputValue}`
-      )
-        .then((response) => response.json())
-        .then((data) => setResponse(data));
-    } catch (error) {
-      console.error(error);
+    if (inputValue) {
+      try {
+        fetch(
+          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputValue}`
+        )
+          .then((response) => response.json())
+          .then((data) => setResponse(data));
+      } catch (error) {
+        console.error(error);
+      }
+      setInputValue("");
     }
-    console.log(response);
   }
 
   //RETURN INGREDIENTS !== NULL
@@ -44,29 +46,35 @@ function App() {
   return (
     <div className="App">
       <Header title={"Sam's Bar"} />
-      <Form onSubmit={handleSubmit} onChange={handleChange} />
-      <div className="cocktail-container">
-        {response.drinks &&
-          response.drinks.map((cocktail, index) => (
-            <Cocktail
-              onClick={() =>
-                cocktailDisplay === cocktail.strDrink
-                  ? setCocktailDisplay("cocktail.strDrink")
-                  : setCocktailDisplay(cocktail.strDrink)
-              }
-              key={index}
-              title={cocktail.strDrink}
-              src={cocktail.strDrinkThumb}
-              alt={cocktail.strDrink}
-              getIngredients={getIngredient(cocktail)}
-              displayClassName={
-                cocktailDisplay === cocktail.strDrink
-                  ? "display-block"
-                  : "display-none"
-              }
-            />
-          ))}
-      </div>
+      <main className="main">
+        <Form
+          inputValue={inputValue}
+          onSubmit={handleSubmit}
+          onChange={handleChange}
+        />
+        <div className="cocktail-container">
+          {response.drinks &&
+            response.drinks.map((cocktail, index) => (
+              <Cocktail
+                onClick={() =>
+                  cocktailDisplay === cocktail.strDrink
+                    ? setCocktailDisplay("cocktail.strDrink")
+                    : setCocktailDisplay(cocktail.strDrink)
+                }
+                key={index}
+                title={cocktail.strDrink}
+                src={cocktail.strDrinkThumb}
+                alt={cocktail.strDrink}
+                getIngredients={getIngredient(cocktail)}
+                displayClassName={
+                  cocktailDisplay === cocktail.strDrink
+                    ? "display-open"
+                    : "display-close"
+                }
+              />
+            ))}
+        </div>
+      </main>
       <Footer text={"powered by thecocktaildb"} />
     </div>
   );

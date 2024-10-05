@@ -5,10 +5,14 @@
   --taupe-gray: #91818a;
   --Rose-quartz: #b2a3b5;
 }
+html {
+  font-size: 10px;
+}
 body {
   margin: 0;
   padding: 0;
   background-color: var(--Almond);
+  font-size: 1.6rem;
 }
 
 header {
@@ -22,25 +26,31 @@ footer {
   text-align: center;
 }
 .cocktail-container {
-  background-color: var(--dun);
+  margin: 1rem;
 }
 .cocktail {
+  background-color: var(--light-yellow);
   padding: 1rem;
+  margin: 1rem 0;
 }
 .cocktail img {
-  width: 320px;
+  width: 24rem;
+  object-fit: cover;
 }
 .cocktail h2 {
   margin: 0;
 }
 .cocktail ul {
-  padding: 0;
+  padding: 1rem;
   margin: 0;
   list-style: none;
 }
-.display-none {
+.display-close {
   display: none;
 }
 .display-open {
-  display: block;
+  padding-top: 1rem;
+  display: flex;
+
+  align-items: center;
 }
