@@ -8,6 +8,7 @@ import "./App.css";
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [response, setResponse] = useState("");
+  const [cocktailDisplay, setCocktailDisplay] = useState("Garibaldi Negroni");
 
   //HANDLE INPUT CHANGE
   function handleChange(e) {
@@ -48,11 +49,21 @@ function App() {
         {response.drinks &&
           response.drinks.map((cocktail, index) => (
             <Cocktail
+              onClick={() =>
+                cocktailDisplay === cocktail.strDrink
+                  ? setCocktailDisplay("cocktail.strDrink")
+                  : setCocktailDisplay(cocktail.strDrink)
+              }
               key={index}
               title={cocktail.strDrink}
               src={cocktail.strDrinkThumb}
               alt={cocktail.strDrink}
-              ingredients={getIngredient(cocktail)}
+              getIngredients={getIngredient(cocktail)}
+              displayClassName={
+                cocktailDisplay === cocktail.strDrink
+                  ? "display-block"
+                  : "display-none"
+              }
             />
           ))}
       </div>
