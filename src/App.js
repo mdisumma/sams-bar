@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "./component/header/Header";
 import Footer from "./component/footer/Footer";
 import Form from "./component/form/Form";
-import Display from "./component/display/Display";
+import Cocktail from "./component/cocktail/Cocktail";
 import "./App.css";
 
 function App() {
@@ -44,17 +44,19 @@ function App() {
     <div className="App">
       <Header title={"Sam's Bar"} />
       <Form onSubmit={handleSubmit} onChange={handleChange} />
-      {response.drinks &&
-        response.drinks.map((cocktail, index) => (
-          <Display
-            key={index}
-            title={cocktail.strDrink}
-            src={cocktail.strDrinkThumb}
-            alt={cocktail.strDrink}
-            ingredients={getIngredient(cocktail)}
-          />
-        ))}
-      <Footer text={"paowered by thecocktaildb"} />
+      <div className="cocktail-container">
+        {response.drinks &&
+          response.drinks.map((cocktail, index) => (
+            <Cocktail
+              key={index}
+              title={cocktail.strDrink}
+              src={cocktail.strDrinkThumb}
+              alt={cocktail.strDrink}
+              ingredients={getIngredient(cocktail)}
+            />
+          ))}
+      </div>
+      <Footer text={"powered by thecocktaildb"} />
     </div>
   );
 }

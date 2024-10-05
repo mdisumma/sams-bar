@@ -5,3 +5,34 @@
   --taupe-gray: #91818a;
   --Rose-quartz: #b2a3b5;
 }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--Almond);
+}
+
+header {
+  background-color: var(--light-yellow);
+  padding: 1rem;
+  text-align: center;
+}
+footer {
+  background-color: var(--light-yellow);
+  padding: 1rem;
+  text-align: center;
+}
+.cocktail-container {
+  overflow: scroll;
+  display: flex;
+}
+.cocktail {
+  padding: 1rem;
+}
+.cocktail img {
+  width: 320px;
+}
+.cocktail ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

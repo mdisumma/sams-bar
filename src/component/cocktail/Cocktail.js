@@ -1,6 +1,6 @@
-export default function Display(props) {
+export default function Cocktail(props) {
   return (
-    <section className="cocktail-display">
+    <section className="cocktail">
       <h2>{props.title}</h2>
       <img src={props.src} alt={props.alt} />
       <ul>
