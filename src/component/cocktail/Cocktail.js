@@ -4,11 +4,14 @@ export default function Cocktail(props) {
       <h2>{props.title}</h2>
       <div className={props.displayClassName}>
         <img src={props.src} alt={props.alt} />
-        <ul>
-          {props.getIngredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            {props.getIngredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+          <p>{props.instruction}</p>
+        </div>
       </div>
     </section>
   );

@@ -29,6 +29,7 @@ function App() {
       } catch (error) {
         console.error(error);
       }
+      console.log(response);
       setInputValue("");
     }
   }
@@ -37,7 +38,9 @@ function App() {
   function getIngredient(cocktail) {
     return Object.keys(cocktail).reduce((acc, key) => {
       if (key.includes("Ingredient") && cocktail[key] !== null) {
-        acc.push(cocktail[key]);
+        const measureKey = key.replace("Ingredient", "Measure");
+        const measure = cocktail[measureKey] || "";
+        acc.push(`${cocktail[key]} ${measure}`.trim());
       }
       return acc;
     }, []);
@@ -65,17 +68,18 @@ function App() {
                 title={cocktail.strDrink}
                 src={cocktail.strDrinkThumb}
                 alt={cocktail.strDrink}
-                getIngredients={getIngredient(cocktail)}
+                getIngredients={getIngredient(cocktail, cocktail)}
                 displayClassName={
                   cocktailDisplay === cocktail.strDrink
                     ? "display-open"
                     : "display-close"
                 }
+                instruction={cocktail.strInstructions}
               />
             ))}
         </div>
       </main>
-      <Footer text={"powered by thecocktaildb"} />
+      <Footer text={"powered by thecocktailDB"} />
     </div>
   );
 }
