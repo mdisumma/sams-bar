@@ -9,13 +9,13 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const [response, setResponse] = useState("");
 
-  //HANDLE CHANGE
+  //HANDLE INPUT CHANGE
   function handleChange(e) {
     console.log(e.target.value);
     setInputValue(e.target.value);
   }
 
-  //HANDLE SUBMIT
+  //HANDLE SUBMIT (fetch)
   function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -30,7 +30,7 @@ function App() {
     console.log(response);
   }
 
-  //GET INGREDIENTS FROM OBJECT
+  //RETURN INGREDIENTS !== NULL
   function getIngredient(cocktail) {
     return Object.keys(cocktail).reduce((acc, key) => {
       if (key.includes("Ingredient") && cocktail[key] !== null) {
