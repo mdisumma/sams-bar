@@ -4,7 +4,7 @@ export default function Cocktail(props) {
       <h2>{props.title}</h2>
       <div className={props.displayClassName}>
         <img src={props.src} alt={props.alt} />
-        <div>
+        <div className={"cocktail-information"}>
           <ul>
             {props.getIngredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>

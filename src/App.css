@@ -18,6 +18,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
+  min-width: 30rem;
 }
 
 header {
@@ -26,6 +27,10 @@ header {
   text-align: center;
 }
 
+.main {
+  max-width: 90rem;
+  margin: 0 auto;
+}
 form {
   width: fit-content;
   margin: 1rem auto 0 auto;
@@ -40,17 +45,28 @@ footer {
 }
 .cocktail {
   background-color: var(--light-yellow);
-  padding: 1rem;
   margin: 1rem 0;
 }
+.cocktail-information {
+  box-sizing: border-box;
+  min-width: 28rem;
+  max-width: 40rem;
+  padding: 1rem;
+}
 .cocktail img {
-  width: 24rem;
+  padding: 1rem;
+  min-width: 22rem;
+  max-width: 40rem;
   object-fit: cover;
+  /* margin: 0 auto; */
 }
 .cocktail h2 {
+  text-align: center;
+  padding: 1rem;
   margin: 0;
   font-weight: 400;
 }
+
 .cocktail ul {
   padding: 0;
   margin: 0;
@@ -60,6 +76,8 @@ footer {
   display: none;
 }
 .display-open {
-  padding-top: 1rem;
+  border-top: 1px solid black;
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
