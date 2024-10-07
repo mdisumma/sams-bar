@@ -31,6 +31,7 @@ function App() {
       }
       console.log(response);
       setInputValue("");
+      console.log(response);
     }
   }
 
